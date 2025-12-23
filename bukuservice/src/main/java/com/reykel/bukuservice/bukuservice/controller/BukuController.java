@@ -23,7 +23,7 @@ public class BukuController {
     @PostMapping
     public Buku save(@RequestBody Buku buku) {
         // 4. Log saat menerima request POST
-        log.info("Menerima request POST buku baru. Judul: {}, Pengarang: {}", buku.getJudul(), buku.getPengarang());
+        log.info("Menerima req POST buku baru. Judul: {}, Pengarang: {}", buku.getJudul(), buku.getPengarang());
 
         Buku savedBuku = bukuService.save(buku);
 
