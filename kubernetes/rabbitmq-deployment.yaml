@@ -1,4 +1,15 @@
 # kubernetes/rabbitmq-deployment.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rabbitmq-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi # <-- BATAS 2GB
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

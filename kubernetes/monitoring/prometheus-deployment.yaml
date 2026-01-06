@@ -25,6 +25,9 @@ spec:
           image: prom/prometheus:v2.53.0
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus"
+            - "--storage.tsdb.retention.time=2d"  # <-- HANYA SIMPAN DATA 2 HARI
+            - "--storage.tsdb.retention.size=5GB" # <-- ATAU MAKSIMAL 5GB
           ports:
             - containerPort: 9090
           volumeMounts:
@@ -34,6 +37,8 @@ spec:
         - name: prometheus-config-volume
           configMap:
             name: prometheus-config
+        - name: prometheus-storage
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
